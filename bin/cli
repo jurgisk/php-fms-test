@@ -1,0 +1,43 @@
+#!/usr/bin/env php
+<?php
+require_once('setup.php');
+$fs = new JDI\FMS\JK\FileSystem($pdo);
+$cli = new JDI\FMS\JK\Cli($fs);
+
+$usage = array(
+    "To Create a Root Folder                  : bin/cli create-root-folder --path='SomePath' --name='SomeName'",
+    "To Create a Root Folder and Child Folder : bin/cli create-root-and-child-folder --root-folder-path='/some-path-again' --root-folder-name='Parent Url' --child-folder-path='/some-path-again/item1' --child-folder-name='Item 1'",
+    "To Create a Root Folder and a File       : bin/cli create-root-folder-and-file --folder-name='some_name' --folder-path='/some/path/to/folder' --file-name='Some_Document.txt' --file-size=123",
+    "To Delete a Folder                       : bin/cli delete-folder --id=3",
+    "To Rename a Folder                       : bin/cli rename-folder --id=5 --new-name='Changed Directory Name'",
+    "To Get Folder Count]                     : bin/cli get-folder-count --id=5",
+    "To Get Folder Count (recursive)          : bin/cli get-all-sub-folder-count --id=5",
+    "To Get Folders (var_export)              : bin/cli get-folders --id=5",
+    "To Get Files From Folder (var_export)    : bin/cli get-files --id=5",
+    "To Get Files Count From Folder           : bin/cli get-file-count --id=5",
+    "To Get Directory Size (no subfolders)    : bin/cli get-total-file-size-in-folder --id=5",
+    "To Get Directory Size (inc. subfolders)  : bin/cli get-directory-size --id=5",
+    "To Create a File in Existing Folder      : bin/cli create-file --folder-id=1 --file-name='Annual_Report.txt' --file-size=3131",
+    "To Update an existing File               : bin/cli update-file --id=3 --name='Thew New File Name.txt' --size=777",
+    "To Delete an Existing File               : bin/cli delete-file --id=3",
+    "To Rename an Existing File               : bin/cli rename-file --id=3 --new-name='The new Filename.txt'",
+);
+
+$params = $argv;
+unset($params[0]);
+
+if (!$params) {
+    echo chr(10).'Please provide the command as the first arguments and arguments afterwards.'.chr(10);
+    echo 'Here are some usage samples::'.chr(10).chr(10);
+    echo implode(chr(10).chr(10), $usage).chr(10).chr(10);
+} else {
+    $method = $cli->getMethodName($params[1]);
+    if (!method_exists($cli, $method)) {
+        echo chr(10).'The method does not exist in file system'.chr(10);
+        echo 'Please type bin/cli to get usage examples'.chr(10);
+        echo chr(10);
+    } else {
+        $result = $cli->handle($method, $params);
+        echo chr(10).$result.chr(10).chr(10);
+    }
+}

@@ -1,5 +1,7 @@
 <?php
 
+namespace JDI\FMS;
+
 interface FolderInterface
 {
   /**
@@ -15,12 +17,12 @@ interface FolderInterface
   public function setName($name);
 
   /**
-   * @return DateTime
+   * @return \DateTime
    */
   public function getCreatedTime();
   
   /**
-   * @param DateTime $created
+   * @param \DateTime $created
    *
    * @return $this
    */

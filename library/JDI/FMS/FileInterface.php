@@ -1,5 +1,7 @@
 <?php
 
+namespace JDI\FMS;
+
 interface FileInterface
 {
   /**
@@ -27,24 +29,24 @@ interface FileInterface
   public function setSize($size);
 
   /**
-   * @return DateTime
+   * @return \DateTime
    */
   public function getCreatedTime();
 
   /**
-   * @param DateTime $created
+   * @param \DateTime $created
    *
    * @return $this
    */
   public function setCreatedTime($created);
 
   /**
-   * @return DateTime
+   * @return \DateTime
    */
   public function getModifiedTime();
 
   /**
-   * @param DateTime $modified
+   * @param \DateTime $modified
    *
    * @return $this
    */

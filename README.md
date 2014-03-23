@@ -1,6 +1,12 @@
 JDI Developer Task
 ==================
 
+Notes for testing the work
+--------------------------
+- on line 19 in bin/setup.php change the connection details
+- database setup is assets directory
+- run bin/cli to get all the options
+
 Prerequisites
 -------------
 

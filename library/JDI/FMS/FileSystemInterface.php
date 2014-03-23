@@ -1,5 +1,7 @@
 <?php
 
+namespace JDI\FMS;
+
 /**
  * File System Management
  */
