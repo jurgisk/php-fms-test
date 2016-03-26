@@ -25,7 +25,6 @@ class FolderTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('big_photos', $this->folder->getName());
         $this->folder->setName(123123);
         $this->assertSame('123123', $this->folder->getName());
-	$this->assertFalse(true); //TODO - TAKE OUT WHEN DONE PLAYING
     }
 
     public function testCreatedTime()
