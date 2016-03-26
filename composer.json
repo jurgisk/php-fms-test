@@ -1,0 +1,16 @@
+{
+    "name": "jurgis/jdi-test",
+    "description": "Some stuff that I needed",
+    "type": "library",
+    "require": {
+        "phpunit/phpunit": "^4"
+    },
+    "license": "Self generated",
+    "authors": [
+        {
+            "name": "Jurgis Kalkis",
+            "email": "jurgis@wzukltd.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
